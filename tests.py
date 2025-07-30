@@ -25,7 +25,7 @@ class TestBooksCollector:
 
 class TestBooksCollector:
 
-    def test_add_book_in_favorites_sucsess(self):
+    def test_add_book_in_favorites_sucсess(self):
         collector = BooksCollector()
         collector.add_new_book('Преступление и наказание')
         collector.add_book_in_favorites('Преступление и наказание')
