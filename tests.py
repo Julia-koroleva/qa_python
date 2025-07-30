@@ -28,5 +28,5 @@ class TestBooksCollector:
     def test_add_book_in_favorites_sucsess(self):
         collector = BooksCollector()
         collector.add_new_book('Преступление и наказание')
-
-        assert len(collector.get_books_genre()) == 0
+        collector.add_book_in_favorites('Преступление и наказание')
+        assert len(collector.get_list_of_favorites_books()) == 1
