@@ -9,8 +9,15 @@ class TestBooksCollector:
 
 class TestBooksCollector:
 
-    def test_add_new_book_add_two__equal_books_fail(self):
+    def test_add_new_book_add_two__equal_books_failed(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Гордость и предубеждение и зомби')
         assert len(collector.get_books_genre()) == 1
+
+class TestBooksCollector:
+
+    def test_add_new_book_add_books_len_more_than_40_failed(self):
+        collector = BooksCollector()
+        collector.add_new_book('Сказка о царе Салтане, о сыне его славном и могучем богатыре князе Гвидоне Салтановиче и о прекрасной Царевне Лебеди')
+        assert len(collector.get_books_genre()) == 0
