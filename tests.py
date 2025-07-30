@@ -30,3 +30,12 @@ class TestBooksCollector:
         collector.add_new_book('Преступление и наказание')
         collector.add_book_in_favorites('Преступление и наказание')
         assert len(collector.get_list_of_favorites_books()) == 1
+
+class TestBooksCollector:
+
+    def test_add_book_in_favorites_two_equal_books_failed(self):
+        collector = BooksCollector()
+        collector.add_new_book('Виола Тараканова')
+        collector.add_book_in_favorites('Виола Тараканова')
+        collector.add_book_in_favorites('Виола Тараканова')
+        assert len(collector.get_list_of_favorites_books()) == 1
