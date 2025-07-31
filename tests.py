@@ -59,3 +59,13 @@ class TestBooksCollector:
         collector.add_new_book('Бегущий по лезвию')
         collector.set_book_genre('Бегущий по лезвию', genre)  
         assert collector.get_book_genre('Бегущий по лезвию') == genre 
+
+import pytest
+
+class TestBooksCollector:
+    @pytest.mark.parametrize('genre_not_inlist', ['Триллер', 'Мелодрама'])
+    def test_set_book_genre_assign_genre_not_inlist_failed(self, genre_not_inlist):
+        collector = BooksCollector()
+        collector.add_new_book('Поющие в терновнике')
+        collector.set_book_genre('Поющие в терновнике', genre_not_inlist)  
+        assert collector.get_book_genre('Поющие в терновнике') != genre_not_inlist 
