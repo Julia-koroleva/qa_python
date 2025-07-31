@@ -40,9 +40,22 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Виола Тараканова')
         assert len(collector.get_list_of_favorites_books()) == 1
 
-def test_delete_book_from_favorites_success():
+class TestBooksCollector:
+    
+    def test_delete_book_from_favorites_success():
         collector = BooksCollector()
         collector.add_new_book('Сказка о золотой рыбке')
         collector.add_book_in_favorites('Сказка о золотой рыбке')
         collector.delete_book_from_favorites('Сказка о золотой рыбке')
         assert len(collector.get_list_of_favorites_books()) == 0
+
+
+import pytest
+
+class TestBooksCollector:
+    @pytest.mark.parametrize('genre', ['Фантастика', 'Ужасы', 'Детективы', 'Мультфильмы', 'Комедии'])
+    def test_set_book_genre_assign_genre_success(self, genre):
+        collector = BooksCollector()
+        collector.add_new_book('Бегущий по лезвию')
+        collector.set_book_genre('Бегущий по лезвию', genre)  
+        assert collector.get_book_genre('Бегущий по лезвию') == genre 
