@@ -12,7 +12,7 @@ class TestBooksCollector:
     def test_add_new_book_add_two__equal_books_failed(self):
         collector = BooksCollector()
         collector.add_new_book('Джейн Эйр')
-        collector.add_new_book('Темная башня')
+        collector.add_new_book('Джейн Эйр')
         assert len(collector.get_books_genre()) == 1
 
 class TestBooksCollector:
