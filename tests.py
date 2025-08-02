@@ -85,3 +85,18 @@ class TestBooksCollector:
         collector.set_book_genre(name, genre)
         assert collector.get_book_genre(name) == genre
 
+import pytest
+
+class TestBooksCollector:
+    @pytest.mark.parametrize('name,genre', [
+    ['Заживо в темноте', 'Ужасы'],
+    ['Восточный экспресс', 'Детективы']
+    ]
+    )
+    def test_get_books_with_specific_genre(self, name, genre):
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        collector.set_book_genre(name, genre)
+        books_with_specific_genre = collector.get_books_with_specific_genre(genre)
+        assert name in books_with_specific_genre
+        
