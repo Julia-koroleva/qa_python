@@ -1,13 +1,12 @@
 from main import BooksCollector
+import pytest
 class TestBooksCollector:
 
     def test_add_new_book_add_two_books(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        assert len(collector.get_books_rating()) == 2
-
-class TestBooksCollector:
+        assert len(collector.get_books_genre()) == 2
 
     def test_add_new_book_add_two__equal_books_failed(self):
         collector = BooksCollector()
@@ -15,23 +14,16 @@ class TestBooksCollector:
         collector.add_new_book('Джейн Эйр')
         assert len(collector.get_books_genre()) == 1
 
-class TestBooksCollector:
-
     def test_add_new_book_add_books_len_more_than_40_failed(self):
         collector = BooksCollector()
         collector.add_new_book('Сказка о царе Салтане, о сыне его славном и могучем богатыре князе Гвидоне Салтановиче и о прекрасной Царевне Лебеди')
         assert len(collector.get_books_genre()) == 0
-
-
-class TestBooksCollector:
 
     def test_add_book_in_favorites_sucсess(self):
         collector = BooksCollector()
         collector.add_new_book('Преступление и наказание')
         collector.add_book_in_favorites('Преступление и наказание')
         assert len(collector.get_list_of_favorites_books()) == 1
-
-class TestBooksCollector:
 
     def test_add_book_in_favorites_two_equal_books_failed(self):
         collector = BooksCollector()
@@ -40,19 +32,13 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Виола Тараканова')
         assert len(collector.get_list_of_favorites_books()) == 1
 
-class TestBooksCollector:
-    
-    def test_delete_book_from_favorites_success():
+    def test_delete_book_from_favorites_success(self):
         collector = BooksCollector()
         collector.add_new_book('Сказка о золотой рыбке')
         collector.add_book_in_favorites('Сказка о золотой рыбке')
         collector.delete_book_from_favorites('Сказка о золотой рыбке')
         assert len(collector.get_list_of_favorites_books()) == 0
 
-
-import pytest
-
-class TestBooksCollector:
     @pytest.mark.parametrize('genre', ['Фантастика', 'Ужасы', 'Детективы', 'Мультфильмы', 'Комедии'])
     def test_set_book_genre_assign_genre_success(self, genre):
         collector = BooksCollector()
@@ -60,9 +46,6 @@ class TestBooksCollector:
         collector.set_book_genre('Бегущий по лезвию', genre)  
         assert collector.get_book_genre('Бегущий по лезвию') == genre 
 
-import pytest
-
-class TestBooksCollector:
     @pytest.mark.parametrize('genre_not_inlist', ['Триллер', 'Мелодрама'])
     def test_set_book_genre_assign_genre_not_inlist_failed(self, genre_not_inlist):
         collector = BooksCollector()
@@ -70,9 +53,6 @@ class TestBooksCollector:
         collector.set_book_genre('Поющие в терновнике', genre_not_inlist)  
         assert collector.get_book_genre('Поющие в терновнике') != genre_not_inlist 
 
-import pytest
-
-class TestBooksCollector:
     @pytest.mark.parametrize('name,genre', [
     ['Заживо в темноте', 'Ужасы'],
     ['Золотой теленок', 'Комедии'],
@@ -85,9 +65,6 @@ class TestBooksCollector:
         collector.set_book_genre(name, genre)
         assert collector.get_book_genre(name) == genre
 
-import pytest
-
-class TestBooksCollector:
     @pytest.mark.parametrize('name,genre', [
     ['Заживо в темноте', 'Ужасы'],
     ['Восточный экспресс', 'Детективы']
@@ -100,9 +77,6 @@ class TestBooksCollector:
         books_with_specific_genre = collector.get_books_with_specific_genre(genre)
         assert name in books_with_specific_genre
 
-import pytest
-
-class TestBooksCollector:
     @pytest.mark.parametrize('name,genre,specific_genre', [
     ['Заживо в темноте', 'Ужасы', True],
     ['Восточный экспресс', 'Детективы', True],
@@ -117,10 +91,6 @@ class TestBooksCollector:
         books_for_children = collector.get_books_for_children()
         assert len(books_for_children) != books_with_specific_genre
 
-
-
-class TestBooksCollector:
-    
     def test_get_list_of_favorites_books_success(self):
         collector = BooksCollector()
         collector.add_new_book('Золотой ключик')
