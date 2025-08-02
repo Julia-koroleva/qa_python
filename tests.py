@@ -14,7 +14,7 @@ class TestBooksCollector:
         collector.add_new_book('Джейн Эйр')
         assert len(collector.get_books_genre()) == 1
 
-    def test_add_new_book_add_books_len_more_than_40_failed(self):
+    def test_add_new_book_len_more_than_40_failed(self):
         collector = BooksCollector()
         collector.add_new_book('Сказка о царе Салтане, о сыне его славном и могучем богатыре князе Гвидоне Салтановиче и о прекрасной Царевне Лебеди')
         assert len(collector.get_books_genre()) == 0
@@ -40,14 +40,14 @@ class TestBooksCollector:
         assert len(collector.get_list_of_favorites_books()) == 0
 
     @pytest.mark.parametrize('genre', ['Фантастика', 'Ужасы', 'Детективы', 'Мультфильмы', 'Комедии'])
-    def test_set_book_genre_assign_genre_success(self, genre):
+    def test_set_book_genre_in_list_success(self, genre):
         collector = BooksCollector()
         collector.add_new_book('Бегущий по лезвию')
         collector.set_book_genre('Бегущий по лезвию', genre)  
         assert collector.get_book_genre('Бегущий по лезвию') == genre 
 
     @pytest.mark.parametrize('genre_not_inlist', ['Триллер', 'Мелодрама'])
-    def test_set_book_genre_assign_genre_not_inlist_failed(self, genre_not_inlist):
+    def test_set_book_genre_not_inlist_failed(self, genre_not_inlist):
         collector = BooksCollector()
         collector.add_new_book('Поющие в терновнике')
         collector.set_book_genre('Поющие в терновнике', genre_not_inlist)  
@@ -70,7 +70,7 @@ class TestBooksCollector:
     ['Восточный экспресс', 'Детективы']
     ]
     )
-    def test_get_books_with_specific_genre(self, name, genre):
+    def test_get_books_with_specific_genre_success(self, name, genre):
         collector = BooksCollector()
         collector.add_new_book(name)
         collector.set_book_genre(name, genre)
@@ -83,7 +83,7 @@ class TestBooksCollector:
     ['Золотой ключик','Мультфильм', False]
     ]
     )
-    def test_get_books_for_children(self, name, genre, specific_genre):
+    def test_get_books_for_children_success(self, name, genre, specific_genre):
         collector = BooksCollector()
         collector.add_new_book(name)
         collector.set_book_genre(name, genre)
