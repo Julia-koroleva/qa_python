@@ -99,4 +99,20 @@ class TestBooksCollector:
         collector.set_book_genre(name, genre)
         books_with_specific_genre = collector.get_books_with_specific_genre(genre)
         assert name in books_with_specific_genre
-        
+
+import pytest
+
+class TestBooksCollector:
+    @pytest.mark.parametrize('name,genre,specific_genre', [
+    ['Заживо в темноте', 'Ужасы', True],
+    ['Восточный экспресс', 'Детективы', True],
+    ['Золотой ключик','Мультфильм', False]
+    ]
+    )
+    def test_get_books_for_children(self, name, genre, specific_genre):
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        collector.set_book_genre(name, genre)
+        books_with_specific_genre = collector.get_books_with_specific_genre(specific_genre)
+        books_for_children = collector.get_books_for_children()
+        assert len(books_for_children) != books_with_specific_genre
