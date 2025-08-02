@@ -116,3 +116,13 @@ class TestBooksCollector:
         books_with_specific_genre = collector.get_books_with_specific_genre(specific_genre)
         books_for_children = collector.get_books_for_children()
         assert len(books_for_children) != books_with_specific_genre
+
+
+
+class TestBooksCollector:
+    
+    def test_get_list_of_favorites_books_success(self):
+        collector = BooksCollector()
+        collector.add_new_book('Золотой ключик')
+        collector.add_book_in_favorites('Золотой ключик')
+        assert len(collector.get_list_of_favorites_books()) == 1
