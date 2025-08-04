@@ -54,7 +54,9 @@ class TestBooksCollector:
     def test_get_book_genre_by_name_success(self, name, genre, collector):
         collector.add_new_book(name)
         collector.set_book_genre(name, genre)
-        assert collector.get_book_genre(name) == genre
+        book_genre = collector.get_book_genre(name)
+        assert book_genre == genre
+    
 
     @pytest.mark.parametrize('name,genre', [
     ['Заживо в темноте', 'Ужасы'],
