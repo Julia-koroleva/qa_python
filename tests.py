@@ -80,7 +80,7 @@ class TestBooksCollector:
         collector.set_book_genre(name, genre)
         books_with_specific_genre = collector.get_books_with_specific_genre(specific_genre)
         books_for_children = collector.get_books_for_children()
-        assert len(books_for_children) != books_with_specific_genre
+        assert (name in books_for_children) != books_with_specific_genre
 
     def test_get_list_of_favorites_books_success(self, collector):
         collector.add_new_book('Золотой ключик')
