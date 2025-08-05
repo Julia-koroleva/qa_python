@@ -86,3 +86,17 @@ class TestBooksCollector:
         collector.add_new_book('Золотой ключик')
         collector.add_book_in_favorites('Золотой ключик')
         assert len(collector.get_list_of_favorites_books()) == 1
+   
+    def test_get_book_genre_success(self, collector):
+        collector.add_new_book('Заживо в темноте')
+        collector.set_book_genre('Заживо в темноте', 'Ужасы')
+        collector.add_new_book('Золотой теленок')
+        collector.set_book_genre('Золотой теленок', 'Комедии')
+        collector.add_new_book('Восточный экспресс')
+        collector.set_book_genre('Восточный экспресс', 'Детективы')
+        assert collector.get_books_genre() == {
+            'Заживо в темноте':'Ужасы',
+            'Золотой теленок':'Комедии',
+            'Восточный экспресс':'Детективы'
+        }
+
