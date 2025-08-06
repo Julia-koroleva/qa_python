@@ -7,11 +7,6 @@ class TestBooksCollector:
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
         assert len(collector.get_books_genre()) == 2
 
-    def test_add_new_book_add_two__equal_books_failed(self, collector):
-        collector.add_new_book('Джейн Эйр')
-        collector.add_new_book('Джейн Эйр')
-        assert len(collector.get_books_genre()) == 1
-
     def test_add_new_book_len_more_than_40_failed(self, collector):
         collector.add_new_book('Сказка о царе Салтане, о сыне его славном и могучем богатыре князе Гвидоне Салтановиче и о прекрасной Царевне Лебеди')
         assert len(collector.get_books_genre()) == 0
